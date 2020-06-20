@@ -10,7 +10,7 @@ all_array=np.random.randint(0,5000,size=[1,384,384])                 #整数
 
 
 
-#取数组l的d第l/2位
+
 def nlogn_median(l):
     l=sorted(l);
     if len(l)%2==1:
@@ -33,7 +33,7 @@ def trivialSelect(meds):
                       
 def select(l,Q):
 
-    if len(l)<5:
+    if len(l)<4:
        return  trivialSelect(l);
   
    
@@ -69,7 +69,7 @@ all_medians=[];
 all_M_medians=[];
 all_rM=[];
 all_order=[];
-Q=3;
+Q=4;
 
 for i in range(1):
     for j in range(384):
@@ -79,20 +79,20 @@ for i in range(1):
 
             
             B=sorted(A);
-            med=median(B);   #64取median
+            med=median(B);   #64个pixel值中取median
 
-            chunks=chunked(A,Q);   #64/3=21%1
+            chunks=chunked(A,Q);   #64/4=16
             full_chunks=[chunk for chunk in chunks if len(chunk)==Q];
             sorted_groups=[sorted(chunk) for chunk in full_chunks];
 
             if Q%2==1:
                meds=[chunk[math.floor(Q/2)] for chunk in sorted_groups];
             else:
-               meds=[chunk[math.floor(Q/2)-1] for chunk in sorted_groups]; #Nmeds=21
+               meds=[chunk[math.floor(Q/2)-1] for chunk in sorted_groups]; #Nmeds=16
  
 
 
-            medM=select(meds,Q);       #7/3=2%1
+            medM=select(meds,Q);       
             
             order=B.index(medM);
 
