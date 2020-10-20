@@ -28,7 +28,6 @@ def trivialSelect(meds):
      meds.append(last);
      meds=sorted(meds);
      return meds[1];
-#没毛病
 
                       
 def select(l,Q):
@@ -48,7 +47,7 @@ def select(l,Q):
     if len(medians)%2==1:
         rM=math.floor(len(medians)/2);
     else:
-        rM=math.floor(len(medians)/2)-1;                     #取medians所在位置
+        rM=math.floor(len(medians)/2)-1;                     #get order of medians
     if len(medians)==7:
        global last;
        last=medians[6];
